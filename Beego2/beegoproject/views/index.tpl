@@ -98,7 +98,6 @@
                   <option value="1">Ascending</option>
                   <option value="2">Descending</option>
                 </select>
-
               </div>
               <div class="col-md-6">
                 <label class="text-muted">Type</label>
@@ -107,19 +106,16 @@
                   <option value="gif">Animated</option>
                   <option value="png,jpg">Static</option>
                 </select>
-
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <label class="text-muted">Category</label>
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="category">
-                  <option value="None">None</option>
                   {{range .F1}}
                   <option value="{{.Id}}">{{.Name}}</option>
                   {{end}}
                 </select>
-
               </div>
               <div class="col-md-6">
                 <label class="text-muted">Breed</label>
@@ -136,14 +132,14 @@
 
           <div class="row" style=" background-color:rgb(255, 255, 255)">
             <div id="images">
-              <div class="row">
-                {{range $i,$v := .F}}
-                <div class="col-md-4">
-                  <img src=" {{$v.Url}}" style="width:100px;height:100px;">
 
-                </div>
-                {{end}}
+              {{range $i,$v := .F}}
+              <div class="col-md-4">
+                <img src=" {{$v.Url}}" style="width:100px;height:100px;">
+
               </div>
+              {{end}}
+
             </div>
 
           </div>
@@ -201,7 +197,7 @@
 
           let html_data = "";
           $.each(data, function (key, value) {
-            html_data += '<div>',
+            html_data += '<div class="col-md-4">',
               html_data += '<img src="' + value.url + '" width="100" height="100"></img>',
               html_data += '</div>'
           })

@@ -57,7 +57,7 @@ func (c *CatController) Get() {
 	limit := c.GetString("limit")
 
 	mime := c.GetString("mime_types")
-	categories := c.GetString("category_ids")
+	categories := c.GetString("category")
 	req := httplib.Get("https://api.thecatapi.com/v1/images/search")
 
 	req.Header("x-api-key", `31cf5af0-bb4d-4275-971c-0e161cbdfa0b`)
