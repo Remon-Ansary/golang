@@ -47,10 +47,6 @@ type Data3 []struct {
 	Name string `json:"name"`
 }
 
-// type apidata struct{
-// 	limit string
-// 	breed string
-// }
 func (c *CatController) Get() {
 
 	breed := c.GetString("breed")
@@ -83,9 +79,12 @@ func (c *CatController) Get() {
 func (c *CategoryController) Get() {
 
 	// limit := c.GetString("limit")
-	breed := c.GetString("breed_id")
-	order := c.GetString("mime_types")
-	category := c.GetString("category_ids")
+	// breed := c.GetString("breed_id")
+	breed := c.Ctx.Input.Param("breed_id")
+	order := c.Ctx.Input.Param("mime_types")
+	category := c.Ctx.Input.Param("category_ids")
+	// order := c.GetString("mime_types")
+	// category := c.GetString("category_ids")
 	page := c.GetString("page")
 	req := httplib.Get("https://api.thecatapi.com/v1/images/search")
 

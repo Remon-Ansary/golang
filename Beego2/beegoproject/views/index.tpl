@@ -200,6 +200,7 @@
             html_data +=
               '<div class="col-md-4">' +
               '<img src="' + value.url + '" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px">' +
+              // +  '<div  style="background-image: url(' + value.url + ') ;height: 200px; background-position: center;background - repeat: no - repeat; background - size: cover; ;">' +
 
               '</div>';
 
