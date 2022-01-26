@@ -54,7 +54,7 @@ type Data3 []struct {
 func (c *CatController) Get() {
 
 	breed := c.GetString("breed")
-	limit := c.GetString("limit")
+	// limit := c.GetString("limit")
 
 	mime := c.GetString("mime_types")
 	categories := c.GetString("category")
@@ -62,7 +62,7 @@ func (c *CatController) Get() {
 
 	req.Header("x-api-key", `31cf5af0-bb4d-4275-971c-0e161cbdfa0b`)
 
-	req.Param("limit", limit)
+	req.Param("limit", "9")
 	req.Param("breed_id", breed)
 	req.Param("mime_types", mime)
 	req.Param("category_ids", categories)
@@ -81,7 +81,6 @@ func (c *CatController) Get() {
 
 func (c *CategoryController) Get() {
 
-	limit := c.GetString("limit")
 	breed := c.GetString("breed_id")
 	order := c.GetString("mime_types")
 	category := c.GetString("category_ids")
@@ -91,7 +90,7 @@ func (c *CategoryController) Get() {
 	req3 := httplib.Get("https://api.thecatapi.com/v1/breeds")
 	req.Header("x-api-key", `31cf5af0-bb4d-4275-971c-0e161cbdfa0b`)
 
-	req.Param("limit", limit)
+	req.Param("limit", "9")
 	req.Param("category_ids", category)
 	// req.Param("page", "")
 	req.Param("breed_id", breed)

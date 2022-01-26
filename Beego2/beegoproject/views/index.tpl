@@ -67,103 +67,91 @@
   </div>
   <br><br>
   <div class="container">
+
     <div class="row">
-      <div class="col-md-6">
-        <h1>The Cat API</h1>
-        <p class="caturday">Because everyday is a Caturday.</p>
-        <p>A public service API all about Cats, free to use when making your fancy new App, Website or Service. Get your
-          license
-          now.</p>
-        <img style="width:400px;height:100px" class="img-fluid" src="https://i.ibb.co/4NmhHS7/new.png">
+      <div class="card shadow-lg z-depth-5 rounded">
+        <div class="row" style="background-color:black;align-items: center; ">
+          <span
+            style="color:white; font-size:25px; display: flex;font-weight:bold;align-items: center; justify-content: center;">
+            <p>Image/Search</p>
+          </span>
 
-
-      </div>
-
-      <div class="col-md-6">
-        <div class="card shadow-lg z-depth-5 rounded">
-          <div class="row" style="background-color:black;align-items: center; ">
-            <span
-              style="color:white; font-size:25px; display: flex;font-weight:bold;align-items: center; justify-content: center;">
-              <p>Image/Search</p>
-            </span>
-
-          </div>
-          <div class="row" style=" background-color: white;">
-            <!-- select row 1 -->
-            <div class="row">
-              <div class="col-md-6">
-                <label class="text-muted">Order</label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="order">
-                  <option selected>Random</option>
-                  <option value="1">Ascending</option>
-                  <option value="2">Descending</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted">Type</label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="type">
-                  <option selected>All</option>
-                  <option value="gif">Animated</option>
-                  <option value="png,jpg">Static</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label class="text-muted">Category</label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="category">
-                  {{range .F1}}
-                  <option value="{{.Id}}">{{.Name}}</option>
-                  {{end}}
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label class="text-muted">Breed</label>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="breed">
-                  <option value="" selected>None</option>
-                  {{range .F2}}
-                  <option value="{{.Id}}">{{.Name}}</option>
-                  {{end}}
-
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style=" background-color:rgb(255, 255, 255)">
-            <div id="images">
-
-              {{range $i,$v := .F}}
-              <div class="col-md-4">
-                <img src=" {{$v.Url}}" style="width:100px;height:100px;">
-
-              </div>
-              {{end}}
-
-            </div>
-
-          </div>
-          <div class="row" style=" height:70px; background-color:rgb(232, 232, 232)">
+        </div>
+        <div class="row" style=" background-color: white;">
+          <!-- select row 1 -->
+          <div class="row">
             <div class="col-md-6">
-              <label class="text-muted">Per Page</label>
-              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="limit">
-                <option selected>1</option>
-                <option value="3">3</option>
-                <option value="6">6</option>
-                <option value="9">9</option>
+              <label class="text-muted">Order</label>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="order">
+                <option selected>Random</option>
+                <option value="1">Ascending</option>
+                <option value="2">Descending</option>
               </select>
             </div>
-            <div class="col-md-6" style="margin-top:17px">
-              <span>
-                <button type="button" class="btn btn-primary btn-block"> <i class="fas fa-redo"></i> More</button>
-              </span>
+            <div class="col-md-6">
+              <label class="text-muted">Type</label>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="type">
+                <option selected>All</option>
+                <option value="gif">Animated</option>
+                <option value="png,jpg">Static</option>
+              </select>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label class="text-muted">Category</label>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="category">
+                <option value="" selected>None</option>
+                {{range .F1}}
+                <option value="{{.Id}}">{{.Name}}</option>
+                {{end}}
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="text-muted">Breed</label>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="breed">
+                <option value="" selected>None</option>
+                {{range .F2}}
+                <option value="{{.Id}}">{{.Name}}</option>
+                {{end}}
 
+              </select>
+            </div>
           </div>
         </div>
-      </div>
 
+
+
+        <div class="row">
+          <div id="images" class="row"></div>
+        </div>
+        <!-- {{range $i,$v := .F}}
+              <div class="col-md-4">
+                <img src=" {{$v.Url}}" style="width:100px;height:100px;">
+              </div>
+              {{end}} -->
+      </div>
+      <div class="row" style=" height:70px; background-color:rgb(232, 232, 232)">
+        <div class="col-md-6">
+          <label class="text-muted">Per Page</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="limit">
+            <option selected>9</option>
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="9">12</option>
+          </select>
+        </div>
+        <div class="col-md-6" style="margin-top:17px">
+          <span>
+            <button type="button" class="btn btn-primary btn-block"> <i class="fas fa-redo"></i> More</button>
+          </span>
+        </div>
+
+      </div>
     </div>
+  </div>
+
+  </div>
 
   </div>
 
@@ -197,9 +185,16 @@
 
           let html_data = "";
           $.each(data, function (key, value) {
-            html_data += '<div class="col-md-4">',
-              html_data += '<img src="' + value.url + '" width="100" height="100"></img>',
-              html_data += '</div>'
+
+            html_data +=
+              '<div class="col-md-4">' +
+              '<img src="' + value.url + '" style="object-fit: cover;height:400px;width:400px;padding: 10px 0px 10px 0px">' +
+
+              '</div>';
+
+            // html_data += '<div class="col-md-4">',
+            //   html_data += '<img src="' + value.url + '" width="100" height="100"></img>',
+            //   html_data += '</div>'
           })
 
           $("#images").html(html_data);
