@@ -122,36 +122,42 @@
 
 
 
-        <div class="row">
-          <div id="images" class="row"></div>
-        </div>
         <!-- {{range $i,$v := .F}}
               <div class="col-md-4">
                 <img src=" {{$v.Url}}" style="width:100px;height:100px;">
               </div>
               {{end}} -->
-      </div>
-      <div class="row" style=" height:70px; background-color:rgb(232, 232, 232)">
-        <div class="col-md-6">
-          <label class="text-muted">Per Page</label>
-          <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="limit">
-            <option selected>9</option>
-            <option value="3">3</option>
-            <option value="6">6</option>
-            <option value="9">12</option>
-          </select>
-        </div>
-        <div class="col-md-6" style="margin-top:17px">
-          <span>
-            <button type="button" class="btn btn-primary btn-block"> <i class="fas fa-redo"></i> More</button>
-          </span>
+
+        <div class="row" style=" height:70px; background-color:rgb(232, 232, 232)">
+          <div class="col-md-6">
+            <label class="text-muted">Per Page</label>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="limit">
+              <option value="9">9</option>
+              <option value="3">3</option>
+              <option value="6">6</option>
+              <option value="9">12</option>
+            </select>
+          </div>
+          <div class="col-md-6" style="margin-top:17px">
+            <span>
+              <button type="button" class="btn btn-primary btn-block"> <i class="fas fa-redo"></i> More</button>
+            </span>
+          </div>
+
         </div>
 
+        <div class="row">
+          <div id="images" class="row">
+            {{range $i,$v := .F}}
+            <div class="col-md-4">
+              <img src=" {{$v.Url}}" style="width:100px;height:100px;">
+            </div>
+            {{end}}
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
-
-  </div>
 
   </div>
 
@@ -188,7 +194,7 @@
 
             html_data +=
               '<div class="col-md-4">' +
-              '<img src="' + value.url + '" style="object-fit: cover;height:400px;width:400px;padding: 10px 0px 10px 0px">' +
+              '<img src="' + value.url + '" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px">' +
 
               '</div>';
 
