@@ -140,7 +140,9 @@
           </div>
           <div class="col-md-6" style="margin-top:17px">
             <span>
-              <button type="button" class="btn btn-primary btn-block"> <i class="fas fa-redo"></i> More</button>
+              <button type="button" id="page" value="0" class="btn btn-primary btn-block">
+                <i class="fas fa-redo"> </i>
+                More</button>
             </span>
           </div>
 
@@ -150,7 +152,7 @@
           <div id="images" class="row">
             {{range $i,$v := .F}}
             <div class="col-md-4">
-              <img src=" {{$v.Url}}" style="width:100px;height:100px;">
+              <img src=" {{$v.Url}}" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px">
             </div>
             {{end}}
           </div>
@@ -162,15 +164,66 @@
   </div>
 
 
-
-
   <script>
+    $(document).on('click', 'button', function () {
+
+
+      let order = $('#order').val();
+      let category = $('#category').val();
+      let breed = $('#breed').val();
+      let limit = $('#limit').val();
+      let type = $('#type').val();
+      let page = document.getElementById("page").value = parseInt(document.getElementById("page").value) + 1;
+      console.log(page);
+
+      $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/new',
+        data: {
+          "order": order,
+          "category": category,
+          "breed": breed,
+          "limit": limit,
+          "mime_types": type,
+          "page": page
+        },
+
+        success: function (response) {
+          console.log(order);
+          console.log(breed);
+          console.log(limit);
+          let data = response;
+
+          let html_data = "";
+          $.each(data, function (key, value) {
+
+            html_data +=
+              '<div class="col-md-4">' +
+              '<img src="' + value.url + '" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px">' +
+
+              '</div>';
+
+            // html_data += '<div class="col-md-4">',
+            //   html_data += '<img src="' + value.url + '" width="100" height="100"></img>',
+            //   html_data += '</div>'
+          })
+
+          $("#images").html(html_data);
+        },
+        error: function (error) {
+          console.log(error)
+        }
+      })
+
+    });
+
     $(document).on('change', 'select', function () {
       let order = $('#order').val();
       let category = $('#category').val();
       let breed = $('#breed').val();
       let limit = $('#limit').val();
       let type = $('#type').val();
+
 
       $.ajax({
         type: 'GET',

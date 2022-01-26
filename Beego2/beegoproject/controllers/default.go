@@ -55,17 +55,18 @@ func (c *CatController) Get() {
 
 	breed := c.GetString("breed")
 	limit := c.GetString("limit")
-
+	page := c.GetString("page")
 	mime := c.GetString("mime_types")
 	categories := c.GetString("category")
 	req := httplib.Get("https://api.thecatapi.com/v1/images/search")
 
 	req.Header("x-api-key", `31cf5af0-bb4d-4275-971c-0e161cbdfa0b`)
-
+	req.Param("page", page)
 	req.Param("limit", limit)
 	req.Param("breed_id", breed)
 	req.Param("mime_types", mime)
 	req.Param("category_ids", categories)
+	req.Param("page", "1")
 
 	resp, err := req.String()
 	if err != nil {
@@ -85,17 +86,19 @@ func (c *CategoryController) Get() {
 	breed := c.GetString("breed_id")
 	order := c.GetString("mime_types")
 	category := c.GetString("category_ids")
+	page := c.GetString("page")
 	req := httplib.Get("https://api.thecatapi.com/v1/images/search")
 
 	req2 := httplib.Get("https://api.thecatapi.com/v1/categories")
 	req3 := httplib.Get("https://api.thecatapi.com/v1/breeds")
 	req.Header("x-api-key", `31cf5af0-bb4d-4275-971c-0e161cbdfa0b`)
 
-	req.Param("limit", "3")
+	req.Param("limit", "9")
 	req.Param("category_ids", category)
 	// req.Param("page", "")
 	req.Param("breed_id", breed)
 	req.Param("mime_types", order)
+	req.Param("page", page)
 
 	resp2, _ := req2.String()
 	resp3, _ := req3.String()
