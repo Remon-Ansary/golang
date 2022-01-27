@@ -151,10 +151,15 @@
         <div class="row">
           <div id="images" class="row">
             {{range $i,$v := .F}}
-            <div class="col-md-4">
-              <img src=" {{$v.Url}}" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px">
+            <div class="col-md-4" style="padding-top:10px">
+              <div
+                style=" background-image: url({{$v.Url}}); background-repeat: no-repeat; height: 300px; background-size: cover;">
+                <!-- <img src=" {{$v.Url}}" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px"> -->
+              </div>
+
             </div>
             {{end}}
+
           </div>
 
         </div>
@@ -162,9 +167,13 @@
     </div>
 
   </div>
-
+  <!-- <div id="loading">
+    <img id="loading-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Loader.gif/480px-Loader.gif"
+      alt="Loading..." />
+  </div> -->
 
   <script>
+
     $(document).on('click', 'button', function () {
 
 
@@ -197,12 +206,20 @@
           let html_data = "";
           $.each(data, function (key, value) {
 
-            html_data +=
-              '<div class="col-md-4">' +
-              '<img src="' + value.url + '" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px">' +
-              // +  '<div  style="background-image: url(' + value.url + ') ;height: 200px; background-position: center;background - repeat: no - repeat; background - size: cover; ;">' +
+            // html_data +=
+            //   '<div class="col-md-4">' +
+            //   // '<img src="' + value.url + '" style="object-fit: cover;height:200px;width:200px;padding: 10px 0px 10px 0px">' +
+            //   '<div style=" background-image: url(' + value.url + '); background-repeat: no-repeat; height: 200px; background-size: cover;">',
 
-              '</div>';
+            //   '</div>';
+            html_data += '<div class="col-md-4" style="padding-bottom: 10px;">' +
+
+              //html_data += '<img src="' + value.url + '" width="400" height="400"></img>',
+
+              '<div style="padding-bottom: 10px; background-image: url(' + value.url + '); background-repeat: no-repeat; height: 300px; background-size: cover;">' +
+
+              '</div>' +
+              '</div>'
 
             // html_data += '<div class="col-md-4">',
             //   html_data += '<img src="' + value.url + '" width="100" height="100"></img>',
@@ -278,6 +295,26 @@
       width: 200px;
       object-fit: cover;
       object-position: bottom;
+    }
+
+    #loading {
+      position: fixed;
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      text-align: center;
+      opacity: 0.7;
+      background-color: #fff;
+      z-index: 99;
+    }
+
+    #loading-image {
+      position: absolute;
+      top: 100px;
+      left: 240px;
+      z-index: 100;
     }
   </style>
 </body>
